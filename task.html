@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> assignment </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quisquam suscipit dicta sequi maiores deleniti quibusdam vero asperiores maxime dolorum. Quia numquam, fugit adipisci aut dignissimos repudiandae molestiae delectus voluptas.</p>
+    <h2 id="H2"> heading</h2>
+    <img id ="imgid"src="https://www.pinterest.com/pin/832180837419377839/" alt="image"/>
+    <p id="Id1" >id</p>
+    <h1 id="prize1"> ppp</h1>
+</body>
+
+<script>
+      const demo_URl = "https://course-api.com/react-store-products";
+
+
+      
+    //"data sanga kaam garne"
+    function processData(data)
+    {
+        // console.log(data[0])
+        console.log(data[0].name)
+        console.log(data[0].image)
+        console.log(data[0].id)
+        console.log(data[0].price)
+        
+        //displaying api in html 
+        const h1Element = document.getElementById("H2");
+        // console.log("text",h1Element);
+        h1Element.innerHTML=data[0].name;
+
+        const image1= document.getElementById('imgid');
+        image1.src = data[0].image;
+
+        const id1= document.getElementById('Id1');
+        id1.innerHTML = data[0].id;
+
+        const priZe= document.getElementById('prize1');
+        priZe.innerHTML = data[0].price;
+
+    }
+
+
+    //async 
+    const fetchData = async function ()
+    {
+        try{
+
+            const response= await fetch(demo_URl);
+            const data = await response.json();
+            processData(data);
+            console.log(data);
+            console.log(response);
+        }
+        catch(error)
+        {
+            console.log("error",error)
+        }
+    
+    };
+    fetchData();
+
+</script>
+</html>
